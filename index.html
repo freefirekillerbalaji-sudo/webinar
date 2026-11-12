@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkElevate | Turn Your LinkedIn From Invisible to Influential</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f131d;
+      --bg-deep: #0a0e18;
+      --surface: #171b26;
+      --card: #1c1f2a;
+      --elevated: #262a35;
+      --text: #dfe2f1;
+      --text-2: #c3c6d7;
+      --text-3: #8d90a0;
+      --blue: #2563eb;
+      --blue-soft: #b4c5ff;
+      --green: #4edea3;
+      --amber: #ffb95f;
+      --red: #ffb4ab;
+      --on-blue: #eeefff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .display { font-family: "Plus Jakarta Sans", "Inter", sans-serif; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+    .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--blue-soft);
+      text-align: center;
+    }
+    .section-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .section-sub {
+      color: var(--text-2);
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      cursor: pointer;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.13px;
+      border-radius: 12px;
+      padding: 16px 32px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--blue);
+      color: var(--on-blue);
+      box-shadow: 0 12px 32px -6px rgba(37, 99, 235, 0.45);
+    }
+    .btn-secondary { background: var(--elevated); color: var(--text); }
+    .btn svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.66px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+    .badge-green { background: rgba(0, 165, 114, 0.2); color: var(--green); }
+    .badge-blue { background: rgba(37, 99, 235, 0.2); color: var(--blue-soft); }
+    .badge-amber { background: rgba(153, 97, 0, 0.3); color: var(--amber); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 64px 0 128px;
+    }
+    .glow-main {
+      position: absolute;
+      left: 50%;
+      top: 11%;
+      width: 640px;
+      height: 360px;
+      transform: translateX(-50%);
+      background: rgba(37, 99, 235, 0.15);
+      filter: blur(140px);
+      border-radius: 9999px;
+      pointer-events: none;
+    }
+    .glow-side {
+      position: absolute;
+      right: 40px;
+      top: 40px;
+      width: 300px;
+      height: 300px;
+      background: rgba(0, 165, 114, 0.1);
+      filter: blur(100px);
+      border-radius: 9999px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .eyebrow-badge {
+      background: var(--elevated);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      margin-bottom: 32px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.275px;
+      text-transform: uppercase;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--amber); }
+    .hero h1 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 800;
+      font-size: 56px;
+      line-height: 1.15;
+      letter-spacing: -1.4px;
+      max-width: 896px;
+      margin-bottom: 24px;
+    }
+    .grad-text {
+      background: linear-gradient(to right, #8d90a0, #dfe2f1 50%, #b4c5ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .underline-accent {
+      color: var(--blue-soft);
+      text-decoration: underline;
+      text-decoration-color: var(--blue);
+      text-decoration-thickness: 4px;
+      text-underline-offset: 6px;
+    }
+    .subheadline {
+      font-size: 18px;
+      letter-spacing: -0.18px;
+      color: var(--text-2);
+      max-width: 672px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .supporting {
+      font-size: 15px;
+      color: var(--text-3);
+      max-width: 576px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 64px;
+    }
+    .trust-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-2);
+    }
+    .stars { color: var(--amber); letter-spacing: 2px; font-size: 14px; }
+    .trust-bar .sep { color: var(--text-3); }
+    .rating-text { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.66px; color: var(--text); }
+
+    /* Showcase deck */
+    .showcase {
+      width: 100%;
+      max-width: 1024px;
+      background: var(--bg-deep);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .showcase-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .showcase-left { display: flex; align-items: center; gap: 10px; }
+    .showcase-left .light { width: 12px; height: 12px; border-radius: 9999px; }
+    .showcase-title {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.66px;
+      padding-left: 12px;
+    }
+    .verified {
+      background: rgba(0, 165, 114, 0.2);
+      color: var(--green);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.66px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .showcase-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .card {
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card-before { background: var(--surface); }
+    .card-after { background: var(--card); }
+    .card-tag {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.55px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-bottom-left-radius: 8px;
+    }
+    .tag-before { background: #313540; color: var(--text-3); }
+    .tag-after { background: var(--blue); color: var(--on-blue); padding: 4px 14px; }
+    .profile-head { display: flex; gap: 16px; align-items: center; padding-bottom: 24px; }
+    .avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+    }
+    .avatar-ghost { background: var(--elevated); color: var(--text-3); }
+    .avatar-live { background: linear-gradient(135deg, #2563eb, #4edea3); color: #fff; }
+    .profile-name {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+    }
+    .profile-sub { font-size: 13px; color: var(--text-3); }
+    .metric-list { display: flex; flex-direction: column; gap: 12px; }
+    .metric {
+      background: var(--elevated);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .metric-before { background: var(--surface); }
+    .metric-label { font-size: 13px; color: var(--text-3); }
+    .metric-label-light { color: var(--text-2); }
+    .metric-value {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.66px;
+    }
+    .metric-big {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 20px;
+      color: var(--green);
+      letter-spacing: -0.3px;
+    }
+    .metric-big-small { font-size: 11px; color: var(--green); letter-spacing: 0.66px; }
+    .status-bar {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 15px 12px 13px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-3);
+    }
+    .quote-box {
+      background: rgba(10, 14, 24, 0.8);
+      border-radius: 4px;
+      padding: 10px;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .after-footer {
+      background: var(--elevated);
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Sections common */
+    .section { padding: 80px 0; }
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      max-width: 768px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    /* Achievements bento */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .proof-card {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .proof-card.wide { grid-column: span 2; flex-direction: row; align-items: center; gap: 32px; }
+    .proof-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+    .proof-icon svg { width: 22px; height: 22px; }
+    .proof-num {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 800;
+      font-size: 56px;
+      letter-spacing: -1.4px;
+      line-height: 1.1;
+      padding-top: 12px;
+    }
+    .proof-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+      margin: 4px 0 8px;
+    }
+    .proof-text { color: var(--text-2); font-size: 15px; line-height: 1.6; }
+    .proof-foot {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.66px;
+    }
+    .proof-foot svg { width: 13px; height: 13px; flex-shrink: 0; }
+    .proof-wide-body { flex: 1; max-width: 448px; }
+    .donut-wrap {
+      background: var(--bg-deep);
+      border-radius: 12px;
+      padding: 24px;
+      width: 237px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .donut-value {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 24px;
+      fill: var(--text);
+    }
+    .donut-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.66px;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .closing-banner {
+      margin-top: 48px;
+      background: linear-gradient(to right, #1c1f2a, #262a35 50%, #1c1f2a);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .banner-left { display: flex; gap: 20px; align-items: center; }
+    .banner-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 9999px;
+      background: rgba(180, 197, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .banner-icon svg { width: 22px; height: 22px; color: var(--blue-soft); }
+    .banner-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+    }
+    .banner-text { font-size: 13px; color: var(--text-2); }
+    .banner-pill {
+      background: var(--bg-deep);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--green);
+      letter-spacing: 0.66px;
+    }
+
+    /* Lead form section */
+    .lead-section { background: var(--bg); padding: 96px 0; }
+    .lead-card {
+      position: relative;
+      overflow: hidden;
+      max-width: 832px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 24px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .lead-card::before {
+      content: "";
+      position: absolute;
+      right: -96px;
+      top: -96px;
+      width: 320px;
+      height: 320px;
+      background: rgba(37, 99, 235, 0.2);
+      filter: blur(64px);
+      border-radius: 9999px;
+      pointer-events: none;
+    }
+    .lead-head {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .lead-form {
+      width: 100%;
+      max-width: 576px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: relative;
+    }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field label {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.13px;
+      color: var(--text);
+    }
+    .input-wrap { position: relative; }
+    .input-wrap .ico {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--text-3);
+      pointer-events: none;
+    }
+    .input-wrap input {
+      width: 100%;
+      background: var(--bg-deep);
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 16px 16px 16px 48px;
+      font-family: "Inter", sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .input-wrap input::placeholder { color: var(--text-3); }
+    .input-wrap input:focus {
+      border-color: rgba(37, 99, 235, 0.6);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .submit-btn {
+      width: 100%;
+      margin-top: 8px;
+    }
+    .submit-btn[disabled] { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-status {
+      font-size: 14px;
+      text-align: center;
+      min-height: 20px;
+    }
+    .form-status.ok { color: var(--green); }
+    .form-status.err { color: var(--red); }
+    .trust-line {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-3);
+      position: relative;
+    }
+    .trust-line span { display: inline-flex; align-items: center; gap: 6px; }
+    .trust-line svg { width: 13px; height: 13px; }
+
+    /* Audit offer */
+    .offer-section {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-deep);
+      padding: 96px 0;
+    }
+    .offer-aura {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 700px;
+      height: 500px;
+      transform: translate(-50%, -50%);
+      background: rgba(37, 99, 235, 0.1);
+      filter: blur(160px);
+      border-radius: 9999px;
+      pointer-events: none;
+    }
+    .offer-card {
+      position: relative;
+      background: var(--elevated);
+      border-radius: 24px;
+      padding: 56px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .offer-ribbon {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .offer-ribbon .spots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.66px;
+      color: var(--text);
+    }
+    .spots-dot { width: 10px; height: 10px; border-radius: 9999px; background: var(--red); }
+    .offer-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .offer-left { display: flex; flex-direction: column; gap: 12px; }
+    .offer-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+    .offer-title .amber { color: var(--amber); font-weight: 700; }
+    .offer-sub { font-size: 18px; letter-spacing: -0.18px; color: var(--text-2); line-height: 1.6; }
+    .deliverables {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      padding: 20px 0;
+    }
+    .deliv {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      min-height: 90px;
+    }
+    .deliv svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--blue-soft); margin-top: 2px; }
+    .deliv-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.13px;
+      margin-bottom: 4px;
+    }
+    .deliv-text { font-size: 13px; color: var(--text-3); line-height: 1.5; }
+    .psych {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    .psych svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--amber); margin-top: 2px; }
+    .price-card {
+      background: var(--bg-deep);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      text-align: center;
+    }
+    .price-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding-bottom: 8px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 12px;
+      padding-bottom: 8px;
+    }
+    .price-old {
+      font-size: 18px;
+      color: var(--text-3);
+      text-decoration: line-through;
+    }
+    .price-new {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 800;
+      font-size: 56px;
+      letter-spacing: -1.68px;
+      color: var(--amber);
+      line-height: 1.1;
+    }
+    .price-only {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.66px;
+      color: var(--text-2);
+    }
+    .price-desc {
+      font-size: 13px;
+      color: var(--text-2);
+      padding: 0 20px 24px;
+      line-height: 1.5;
+    }
+    .price-card .btn { width: 100%; }
+    .price-foot {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.66px;
+    }
+    .price-foot svg { width: 13px; height: 13px; }
+
+    /* Testimonials */
+    .testimonials { background: var(--bg); padding: 96px 0; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .testi {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .testi-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .testi-stars { color: var(--amber); letter-spacing: 3px; font-size: 14px; }
+    .testi-quote {
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: -0.18px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-top: 16px;
+    }
+    .testi-author { display: flex; gap: 16px; align-items: center; padding-top: 16px; }
+    .testi-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+      color: #fff;
+    }
+    .testi-name {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.13px;
+    }
+    .testi-role { font-size: 13px; color: var(--text-3); }
+    .hook-line {
+      margin-top: 48px;
+      text-align: center;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    /* FAQ */
+    .faq { background: var(--bg-deep); padding: 96px 0; }
+    .faq-wrap { max-width: 896px; margin: 0 auto; padding: 0 32px; }
+    .faq-list { display: flex; flex-direction: column; gap: 16px; margin-top: 64px; }
+    details.faq-item {
+      background: var(--surface);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    details.faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid var(--text-3);
+      border-bottom: 2px solid var(--text-3);
+      transform: rotate(45deg);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+      margin-right: 4px;
+    }
+    details.faq-item[open] summary::after { transform: rotate(-135deg); }
+    details.faq-item p {
+      padding: 0 24px 24px;
+      color: var(--text-2);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Final CTA */
+    .final-section {
+      background: linear-gradient(to bottom, var(--bg), var(--bg-deep));
+      padding: 80px 160px;
+    }
+    .final-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--card);
+      border-radius: 24px;
+      padding: 64px 144px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .final-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: linear-gradient(to right, rgba(37,99,235,0.1), rgba(0,165,114,0.1), rgba(37,99,235,0.1));
+      pointer-events: none;
+    }
+    .final-card > * { position: relative; }
+    .final-badge {
+      background: var(--elevated);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.55px;
+      color: var(--amber);
+      text-transform: uppercase;
+    }
+    .final-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      padding-top: 8px;
+    }
+    .final-sub { font-size: 18px; letter-spacing: -0.18px; color: var(--text-2); line-height: 1.6; max-width: 672px; }
+    .final-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; padding-top: 16px; }
+    .final-foot {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding-top: 16px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.66px;
+    }
+    .final-foot svg { width: 14px; height: 14px; }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .final-section { padding: 80px 48px; }
+      .final-card { padding: 56px 40px; }
+      .offer-card { padding: 40px; }
+    }
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 42px; letter-spacing: -1px; }
+      .section-title, .offer-title, .final-title { font-size: 32px; }
+      .showcase-body { grid-template-columns: 1fr; }
+      .bento { grid-template-columns: 1fr 1fr; }
+      .proof-card.wide { grid-column: span 2; flex-direction: column; align-items: flex-start; }
+      .donut-wrap { width: 100%; }
+      .offer-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 24px; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 40px 0 88px; }
+      .hero h1 { font-size: 34px; line-height: 1.2; }
+      .subheadline { font-size: 16px; }
+      .section { padding: 56px 0; }
+      .section-title, .offer-title, .final-title { font-size: 26px; }
+      .bento { grid-template-columns: 1fr; }
+      .proof-card.wide { grid-column: span 1; }
+      .proof-num { font-size: 44px; }
+      .deliverables { grid-template-columns: 1fr; }
+      .lead-card { padding: 28px 20px; }
+      .offer-card { padding: 28px 20px; }
+      .final-section { padding: 56px 16px; }
+      .final-card { padding: 40px 20px; }
+      .closing-banner { padding: 24px; }
+      .showcase { padding: 20px; }
+      .faq-wrap { padding: 0 16px; }
+      .testi { padding: 24px; }
+      .btn { padding: 14px 24px; }
+      .cta-row .btn, .final-ctas .btn { width: 100%; }
+      .offer-ribbon .spots { font-size: 10px; }
+      .price-new { font-size: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SECTION 1: HERO -->
+<section class="hero" id="top">
+  <div class="glow-main" aria-hidden="true"></div>
+  <div class="glow-side" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="eyebrow-badge">
+      <span class="dot"></span>
+      <span>⚡ Personal Brand Engine for High-Performers • 0 to Hero</span>
+    </div>
+
+    <h1 class="display">
+      Turn Your LinkedIn From <span class="grad-text">Invisible</span><br />
+      to <span class="underline-accent">Influential</span>
+    </h1>
+
+    <p class="subheadline">
+      We don't just 'optimize profiles.' We build your personal brand from scratch —
+      with strategy, content, and consistency that actually gets you seen.
+    </p>
+
+    <p class="supporting">
+      From 0 to hero on LinkedIn — without confusion, guesswork, or wasting months
+      figuring it out alone.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#lead-form">
+        Get Your Profile Audit
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+      <a class="btn btn-secondary" href="#lead-form">
+        Start Growing Today
+        <svg viewBox="0 0 15 9" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 4.5h12M9.5 1l3.5 3.5L9.5 8"/></svg>
+      </a>
+    </div>
+
+    <div class="trust-bar">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text">4.9/5 Rating</span>
+      </div>
+      <span class="sep">•</span>
+      <span style="font-size:13px;font-weight:500;color:var(--text-2);">100+ Brands Built</span>
+      <span class="sep">•</span>
+      <span style="font-size:13px;color:var(--text-3);">Trusted by founders, executives, engineers, &amp; creators across top tech &amp; advisory firms</span>
+    </div>
+
+    <div style="height:56px;"></div>
+
+    <!-- Before vs After showcase -->
+    <div class="showcase">
+      <div class="showcase-top">
+        <div class="showcase-left">
+          <span class="light" style="background:rgba(255,180,171,0.7)"></span>
+          <span class="light" style="background:rgba(255,185,95,0.7)"></span>
+          <span class="light" style="background:rgba(78,222,163,0.7)"></span>
+          <span class="showcase-title">EXECUTIVE_PERFORMANCE_METRICS.LOG</span>
+        </div>
+        <div class="verified">
+          <svg width="13" height="12" viewBox="0 0 13 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.5 6.5l3 3 7-7"/></svg>
+          Verified Transformation
+        </div>
+      </div>
+
+      <div class="showcase-body">
+        <!-- BEFORE -->
+        <div class="card card-before">
+          <span class="card-tag tag-before">BEFORE STRATEGY</span>
+          <div class="profile-head" style="padding-bottom:4px;">
+            <div class="avatar avatar-ghost">?</div>
+            <div>
+              <div class="profile-name" style="color:var(--text-2);">Ghost Town Profile</div>
+              <div class="profile-sub">Generic Title • Inactive Network</div>
+            </div>
+          </div>
+          <div class="metric-list" style="padding-top:12px;">
+            <div class="metric metric-before">
+              <span class="metric-label">Weekly Profile Views</span>
+              <span class="metric-value" style="color:var(--red)">42 views / wk</span>
+            </div>
+            <div class="metric metric-before">
+              <span class="metric-label">Organic Content Reach</span>
+              <span class="metric-value" style="color:var(--text-3)">&lt; 350 impressions</span>
+            </div>
+            <div class="metric metric-before">
+              <span class="metric-label">Inbound Opportunities</span>
+              <span class="metric-value" style="color:var(--text-3)">0 DMs / Quarter</span>
+            </div>
+          </div>
+          <div class="status-bar" style="margin-top:12px;">Status: Invisible in industry search index</div>
+        </div>
+
+        <!-- AFTER -->
+        <div class="card card-after">
+          <span class="card-tag tag-after">AFTER LINKELEVATE SYSTEM</span>
+          <div class="profile-head" style="padding-bottom:4px;padding-top:12px;">
+            <div class="avatar avatar-live">AK</div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span class="profile-name">Industry Top Voice</span>
+                <span class="badge badge-amber" style="padding:2px 8px;font-size:10px;letter-spacing:0.5px;border-radius:4px;">TOP 1%</span>
+              </div>
+              <div style="font-family:Inter;font-weight:500;font-size:13px;color:var(--blue-soft);">Strategic Advisor &amp; Keynote Speaker</div>
+            </div>
+          </div>
+          <div class="metric-list" style="padding-top:12px;">
+            <div class="metric">
+              <span class="metric-label metric-label-light">Organic Impressions</span>
+              <span style="display:flex;align-items:baseline;gap:8px;">
+                <span class="metric-big">184,500</span>
+                <span class="metric-big-small">(+9.4x)</span>
+              </span>
+            </div>
+            <div class="metric" style="flex-direction:column;align-items:stretch;gap:6px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span class="metric-label metric-label-light">High-Ticket Inbound DMs</span>
+                <span class="metric-value" style="color:var(--blue-soft)">14 Key Opportunities</span>
+              </div>
+              <div class="quote-box">
+                "Would love to discuss keynote address &amp; advisory partnership for Q3..."
+              </div>
+            </div>
+          </div>
+          <div class="after-footer" style="margin-top:12px;">
+            <span style="display:flex;align-items:center;gap:8px;">
+              <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="#4edea3" stroke-width="1.6"><path d="M1 12l5-5 3 3 7-8"/></svg>
+              Algorithm Velocity Index
+            </span>
+            <svg width="112" height="24" viewBox="0 0 112 24" fill="none" stroke="#4edea3" stroke-width="2"><path d="M0 20 C 14 18, 22 16, 34 14 S 56 12, 66 9 S 88 5, 112 2"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: ACHIEVEMENTS -->
+<section class="section" style="background:var(--bg-deep);">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">PROVEN TRACK RECORD</div>
+      <h2 class="section-title display">Real Growth. Real Results.</h2>
+      <p class="section-sub">Data-backed outcomes engineered across technical leaders, enterprise founders, and domain experts.</p>
+    </div>
+
+    <div class="bento">
+      <!-- Card 1 -->
+      <div class="proof-card">
+        <div>
+          <div class="proof-icon" style="background:rgba(37,99,235,0.2);">
+            <svg viewBox="0 0 28 14" fill="none" stroke="#b4c5ff" stroke-width="1.8"><path d="M2 12h24M6 8h16M10 4h8"/></svg>
+          </div>
+          <div class="proof-num" style="color:var(--text);">100+</div>
+          <div class="proof-title">Executive Authority</div>
+          <p class="proof-text">Helped 100+ professionals build authority on LinkedIn and command industry respect.</p>
+        </div>
+        <div class="proof-foot">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="6"/><path d="M4.5 7l2 2 3-3.5"/></svg>
+          Verified Alumni Network
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="proof-card">
+        <div>
+          <div class="proof-icon" style="background:rgba(0,165,114,0.2);">
+            <svg viewBox="0 0 28 27" fill="none" stroke="#4edea3" stroke-width="1.8"><path d="M3 14l22-11-6 22-5-9z"/></svg>
+          </div>
+          <div class="proof-num" style="color:var(--green);">350+</div>
+          <div class="proof-title">Inbound Lead Velocity</div>
+          <p class="proof-text">Generated consistent inbound leads through content that turns casual readers into paying partners.</p>
+        </div>
+        <div class="proof-foot">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          Inbound Client Inquiries
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="proof-card">
+        <div>
+          <div class="proof-icon" style="background:rgba(153,97,0,0.3);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ffb95f" stroke-width="1.8"><path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18"/></svg>
+          </div>
+          <div class="proof-num" style="color:var(--amber);">0 → 1</div>
+          <div class="proof-title">Zero-to-Hero Foundation</div>
+          <p class="proof-text">Built personal brands from absolute zero without relying on pre-existing fame or existing followings.</p>
+        </div>
+        <div class="proof-foot">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1l1.8 3.8L13 5.4 10 8.3l.8 4.2L7 10.5 3.2 12.5 4 8.3 1 5.4l4.2-.6z"/></svg>
+          Top Voice Architecture
+        </div>
+      </div>
+
+      <!-- Card 4 (wide) -->
+      <div class="proof-card wide">
+        <div class="proof-wide-body">
+          <div class="proof-icon" style="background:rgba(37,99,235,0.2);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#b4c5ff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+          </div>
+          <div class="proof-num" style="color:var(--blue-soft);">4.8M+</div>
+          <div class="proof-title">Organic Reach Amplification</div>
+          <p class="proof-text">Content that reaches thousands organically. High-retention hooks and value breakdowns that capture executive dwell time.</p>
+        </div>
+        <div class="donut-wrap">
+          <svg width="96" height="96" viewBox="0 0 96 96">
+            <circle cx="48" cy="48" r="42" fill="none" stroke="#262a35" stroke-width="8"/>
+            <circle cx="48" cy="48" r="42" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round"
+              stroke-dasharray="232 264" transform="rotate(-90 48 48)"/>
+            <text x="48" y="56" text-anchor="middle" class="donut-value">88%</text>
+          </svg>
+          <div class="donut-label">Feed Algorithm Dwell<br />Dominance</div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="proof-card" style="grid-column: 3;">
+        <div>
+          <div class="proof-icon" style="background:rgba(0,165,114,0.2);">
+            <svg viewBox="0 0 26 26" fill="none" stroke="#4edea3" stroke-width="1.8"><path d="M3 22l7-7 4 4 9-11"/><path d="M17 8h4v4"/></svg>
+          </div>
+          <div class="proof-num" style="color:var(--text);">+32%</div>
+          <div class="proof-title">Conversion Engine</div>
+          <p class="proof-text">Profiles that convert views into opportunities. Every link, banner, and featured card engineered to convert.</p>
+        </div>
+        <div class="proof-foot">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          View-to-DM Rate
+        </div>
+      </div>
+    </div>
+
+    <div class="closing-banner">
+      <div class="banner-left">
+        <div class="banner-icon">
+          <svg viewBox="0 0 22 21" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 2l2.5 5.5L19 8.3l-4.2 4 1 5.7L11 15.4 6.2 18l1-5.7-4.2-4 5.5-.8z"/></svg>
+        </div>
+        <div>
+          <div class="banner-title">This isn't luck. It's a system that works.</div>
+          <div class="banner-text">Precision positioning, data-backed writing cadences, and proprietary distribution mechanics.</div>
+        </div>
+      </div>
+      <span class="banner-pill">Algorithmic Playbook 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: LEAD FORM -->
+<section class="lead-section" id="lead-form">
+  <div class="container" style="padding:0 24px;">
+    <div class="lead-card">
+      <div class="lead-head">
+        <div class="eyebrow">CUSTOM ROADMAP</div>
+        <h2 class="section-title display" style="font-size:40px;">Let's Build Your LinkedIn Presence<br />Together</h2>
+        <p class="section-sub">Tell us a bit about you — and we'll show you exactly how to grow.</p>
+      </div>
+
+      <form class="lead-form" id="leadForm" autocomplete="on">
+        <div class="field">
+          <label for="name">Full Name</label>
+          <div class="input-wrap">
+            <svg class="ico" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="5" r="3"/><path d="M1.5 13c.8-2.6 3-4 5.5-4s4.7 1.4 5.5 4"/></svg>
+            <input id="name" name="name" type="text" placeholder="e.g. Alex Morgan" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Work or Preferred Email</label>
+          <div class="input-wrap">
+            <svg class="ico" viewBox="0 0 17 14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="15" height="12" rx="2"/><path d="M1.5 2.5L8.5 8l7-5.5"/></svg>
+            <input id="email" name="email" type="email" placeholder="alex@company.com" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone / WhatsApp Number</label>
+          <div class="input-wrap">
+            <svg class="ico" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 1.5h2.5l1 3-1.5 1.2a8 8 0 003.3 3.3l1.2-1.5 3 1v2.5a1.5 1.5 0 01-1.5 1.5A11 11 0 011.5 3a1.5 1.5 0 011.5-1.5z"/></svg>
+            <input id="phone" name="phone" type="tel" placeholder="+1 (555) 019-2834 / +91 ..." required />
+          </div>
+        </div>
+
+        <button class="btn btn-primary submit-btn" id="submitBtn" type="submit">
+          Get My Growth Plan
+          <svg viewBox="0 0 12 15" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7.5h8M6.5 4l3.5 3.5L6.5 11"/></svg>
+        </button>
+
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      </form>
+
+      <div class="trust-line">
+        <span>
+          <svg viewBox="0 0 12 15" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="10" height="8" rx="1.5"/><path d="M3.5 6V4a2.5 2.5 0 015 0v2"/></svg>
+          100% Confidential
+        </span>
+        <span>•</span>
+        <span>
+          <svg viewBox="0 0 12 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1l5 2v4c0 3.5-2.2 6-5 7.5C3.2 13 1 10.5 1 7V3z"/></svg>
+          No spam. No fluff. Just actionable clarity.
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: ₹1 AUDIT OFFER -->
+<section class="offer-section">
+  <div class="offer-aura" aria-hidden="true"></div>
+  <div class="container" style="position:relative;padding:0 24px;max-width:1184px;">
+    <div class="offer-card">
+      <div class="offer-ribbon">
+        <div class="badge badge-amber" style="font-size:11px;padding:6px 16px;letter-spacing:0.55px;">
+          <svg width="11" height="13" viewBox="0 0 11 13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 1L1 7.5h4L4 12l6-7H6z"/></svg>
+          EXCLUSIVE BREAKTHROUGH OPPORTUNITY
+        </div>
+        <div class="spots">
+          <span class="spots-dot"></span>
+          <span>Only 3 spots remaining this week</span>
+        </div>
+      </div>
+
+      <div class="offer-grid">
+        <div class="offer-left">
+          <h2 class="offer-title display">
+            Get a Complete LinkedIn Audit for Just <span class="amber">Rupee 1</span>
+          </h2>
+          <p class="offer-sub">Not a sales call. A real breakdown of what's working, what's not, and what to fix.</p>
+
+          <div class="deliverables">
+            <div class="deliv">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="2" width="14" height="16" rx="2"/><path d="M7 7h6M7 11h6M7 15h3"/></svg>
+              <div>
+                <div class="deliv-title">1. Profile Review</div>
+                <div class="deliv-text">Headline, banner architecture<br />&amp; high-trust positioning.</div>
+              </div>
+            </div>
+            <div class="deliv">
+              <svg viewBox="0 0 23 23" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7"/><path d="M15 15l6 6"/></svg>
+              <div>
+                <div class="deliv-title">2. Content Gap Analysis</div>
+                <div class="deliv-text">Dwell time traps &amp; why<br />current posts get skipped.</div>
+              </div>
+            </div>
+            <div class="deliv">
+              <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 2l2.5 5.5L19 8.3l-4.2 4 1 5.7L11 15.4 6.2 18l1-5.7-4.2-4 5.5-.8z"/></svg>
+              <div>
+                <div class="deliv-title">3. Personal Brand Direction</div>
+                <div class="deliv-text">Your niche unfair advantage &amp;<br />key narrative pillar.</div>
+              </div>
+            </div>
+            <div class="deliv">
+              <svg viewBox="0 0 20 17" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 14l5-5 3 3 8-8"/></svg>
+              <div>
+                <div class="deliv-title">4. Clear Action Steps</div>
+                <div class="deliv-text">Specific tactical roadmap to<br />immediately 3x visibility.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="psych">
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="7"/><path d="M9 5.5v4l2.5 2"/></svg>
+            <span>"Why Rupee 1? Because once you see the value, you'll know what to do next."</span>
+          </div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-label">LIMITED EVALUATION PASS</div>
+          <div class="price-row">
+            <span class="price-old">₹2,999</span>
+            <span class="price-new">₹1</span>
+            <span class="price-only">ONLY</span>
+          </div>
+          <p class="price-desc">1-on-1 Deep Dive Diagnostic session with a Senior Brand Strategist.</p>
+          <a class="btn btn-primary" href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener noreferrer">
+            Book My Audit Now
+            <svg viewBox="0 0 14 15" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7.5h10M8 3.5l4 4-4 4"/></svg>
+          </a>
+          <div class="price-foot">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 1l5 2v4c0 3-2 5-5 6-3-1-5-3-5-6V3z"/></svg>
+            100% Satisfaction Guarantee
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow" style="color:var(--green);">WALL OF LOVE &amp; MOMENTUM</div>
+      <h2 class="section-title display">What Our Clients Say</h2>
+      <p class="section-sub">Real testimonials from leaders who transitioned from anonymous operators to recognizable category authorities.</p>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi">
+        <div>
+          <div class="testi-top">
+            <span class="testi-stars">★★★★★</span>
+            <span class="badge badge-green">+420% Inbound DMs</span>
+          </div>
+          <p class="testi-quote">"I had zero presence before this. Within weeks, I started getting inbound messages and profile views."</p>
+        </div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#2563eb,#8d90a0);">RS</div>
+          <div>
+            <div class="testi-name">Tech Founder &amp; Angel Investor</div>
+            <div class="testi-role">B2B SaaS / FinTech</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi">
+        <div>
+          <div class="testi-top">
+            <span class="testi-stars">★★★★★</span>
+            <span class="badge badge-blue">Positioning Fixed</span>
+          </div>
+          <p class="testi-quote">"The clarity I got here saved me months of trial and error."</p>
+        </div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#00a572,#4edea3);">PM</div>
+          <div>
+            <div class="testi-name">VP of Product Management</div>
+            <div class="testi-role">Enterprise Infrastructure</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi">
+        <div>
+          <div class="testi-top">
+            <span class="testi-stars">★★★★★</span>
+            <span class="badge badge-green">Turnkey Advisory</span>
+          </div>
+          <p class="testi-quote">"It's not just content — it's a full strategy. That's what made the difference."</p>
+        </div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#996100,#ffb95f);">GC</div>
+          <div>
+            <div class="testi-name">Growth Consultant</div>
+            <div class="testi-role">Global GTM Practice</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi">
+        <div>
+          <div class="testi-top">
+            <span class="testi-stars">★★★★★</span>
+            <span class="badge badge-blue">Algorithmic Mastery</span>
+          </div>
+          <p class="testi-quote">"I finally understand how LinkedIn actually works."</p>
+        </div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#262a35,#b4c5ff);">SE</div>
+          <div>
+            <div class="testi-name">Senior Engineering Leader</div>
+            <div class="testi-role">AI &amp; Distributed Systems</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hook-line">Results speak louder than promises.</div>
+  </div>
+</section>
+
+<!-- SECTION 6: FAQ -->
+<section class="faq">
+  <div class="faq-wrap">
+    <div class="section-header" style="margin-bottom:0;">
+      <div class="eyebrow">TRANSPARENCY FIRST</div>
+      <h2 class="section-title display">Frequently Asked Questions</h2>
+      <p class="section-sub">Everything you need to know about our personal branding process, deliverables, and timeline.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Who is this service for?</summary>
+        <p>Anyone who wants to grow on LinkedIn, whether starting from zero or scaling their presence.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you create content for me?</summary>
+        <p>Yes. We help with strategy, scripting, and management depending on the plan.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long does it take to see results?</summary>
+        <p>Most clients see traction within a few weeks when consistency is followed.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this only for job seekers?</summary>
+        <p>No. This works for professionals, founders, freelancers, and anyone building a personal brand.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What makes this different?</summary>
+        <p>We don't just guide. We build and execute with you.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need prior experience on LinkedIn?</summary>
+        <p>Not at all. We specialize in taking people from 0 to visible.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: FINAL CTA -->
+<section class="final-section">
+  <div class="final-card">
+    <div class="final-badge">
+      <span class="dot"></span>
+      Breakthrough Session Available
+    </div>
+    <h2 class="final-title display">Ready to Stop Being LinkedIn's Best<br />Kept Secret?</h2>
+    <p class="final-sub">Claim your ₹1 Profile Audit and comprehensive LinkedIn Growth Plan now. Take the guesswork out of building your category authority.</p>
+
+    <div class="final-ctas">
+      <a class="btn btn-primary" href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener noreferrer">
+        Book Your ₹1 Audit
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+      <a class="btn btn-secondary" href="#lead-form">
+        Get Growth Plan
+        <svg viewBox="0 0 12 15" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7.5h8M6.5 4l3.5 3.5L6.5 11"/></svg>
+      </a>
+    </div>
+
+    <div class="final-foot">
+      <svg viewBox="0 0 15 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7.5" cy="7" r="6"/><path d="M7.5 4v3.5l2 1.5"/></svg>
+      Zero commitment required • Instant slot confirmation
+    </div>
+  </div>
+</section>
+
+<script>
+  // Google Apps Script Web App URL (deployed, access: Anyone)
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyctxLIFNAGcRqhDGXVzbY-nQJo66h2xCI3kjoen1FbdL5sunn_Q_dz01mroEzG-_zG/exec";
+
+  const form = document.getElementById("leadForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const statusEl = document.getElementById("formStatus");
+
+  function showSuccess() {
+    statusEl.className = "form-status ok";
+    statusEl.textContent = "Thanks! Your Growth Plan request has been received.";
+    form.reset();
+    submitBtn.disabled = false;
+  }
+
+  function showError() {
+    statusEl.className = "form-status err";
+    statusEl.textContent = "Something went wrong. Please try again.";
+    submitBtn.disabled = false;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    statusEl.className = "form-status";
+    statusEl.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    const url = SCRIPT_URL + "?" + new URLSearchParams({ name, email, phone });
+
+    fetch(url, { method: "GET", mode: "no-cors" })
+      .then(() => showSuccess())
+      .catch(() => showError());
+  });
+</script>
+
+</body>
+</html>
